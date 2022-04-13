@@ -1,0 +1,1332 @@
+﻿
+-- 운영관리에 최적화된 명령어 세트! Ver_0.4_BugFix_0004 (21-01-03)
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+---::  운영관리에 최적화된 명령어 세트!				:::::::::::::::::::::	본 명령어 세트는 "Windmill" 또는 "윈드밀"에게 저작권이			:::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	있으며, 무단 배포, 재판배가 불가능합니다.							:::
+-- :::::::::::::  명령어 기능			:::::::::::::::::::::::::::::															:::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	본 스크립트는 20명명 이하의 플레이어에게 정상 적용을					:::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	확인하였으며, 한 맵에 과다한 플레이어가 있는 경우 문제가				:::
+-- :: 적용 대상 ::::::::::::  지원 기능		:::::::::::::::::::::::::	발생할 수 있는 점 양해 부탁 드립니다.							:::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	(P.S 저사양으로 확인 불가였어요 ㅠㅠ)							:::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::	본 스크립트는 지속 업데이트/ 관리가 진해될 예정입니다.				:::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- 모든 플레이어에게 		공지 출력 기능
+-- 모든 플레이어에게 		점검 안내 및 내쫓기 기능
+-- 모든 플레이어에게 		이벤트 [경첨치량 ] 증가 기능
+-- 모든 플레이어에게 		이벤트 [ 골드량 ] 증가 기능
+-- 대상 플레이어에게 		소환 기능
+-- 대상 플레이어에게 		출두 기능
+-- 대상 플레이어의  		아이템 지급 기능
+-- 대상 플레이어의  		아이템 일괄지급 기능	:: 미작동 :: 추후 업데이트에서 해결 예정
+-- 대상 플레이어의  		아이템 회수 기능
+-- 대상 플레이어의  		아이템 일괄회수 기능	:: 미작동 :: 추후 업데이트에서 해결 예정
+-- 대상 플레이어의  		버프 부여 기능
+-- 대상 플레이어의  		버프 제거 기능
+-- 대상 플레이어의  		스킬 추가 기능
+-- 대상 플레이어의  		스킬 제거 기능
+-- 대상 플레이어의  		골드 지급 기능
+-- 대상 플레이어의  		골드 회수 기능
+-- 대상 플레이어의  		골드 확인 기능
+-- 대상 플레이어의  		체력 회복 기능
+-- 대상 플레이어의  		체력 감소 기능
+-- 대상 플레이어의  		마력 회복 기능
+-- 대상 플레이어의  		마력 감소 기능
+-- 대상 플레이어의  		변수 확인 기능
+-- 대상 플레이어의  		변수 설정 기능
+-- 대상 플레이어의  		스텟 확인 기능
+-- 대상 플레이어의  		스텟 설정 기능
+-- 대상 플레이어의  		공용 이벤트 실행 기능
+-- 대상 플레이어의  		인벤토리(가방)의 아이템 초기화 기능
+-- 대상 플레이어의  		모든 스킬 제거 기능
+-- 대상 플레이어의  		말풍선 지원 기능
+-- 대상 플레이어의  		아이템 보유 확인 기능
+-- 모든 플레이어의  		특정 아이템 최대 보유자 확인
+-- 대상 플레이어의			권한 설정 기능
+-- 대상 플레이어의			강제 이동 기능
+-- 대상 플레이어의			필드변수 확인 기능
+-- 대상 플레이어의			필드변수 설정 기능
+-- 대상 플레이어의			월드변수 확인 기능
+-- 대상 플레이어의			월드변수 설정 기능
+
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- :::::::::::::  									아래는 명령어 사용 방법 입니다.											:::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+--[[::::::::--]]  local Admin_Level = {}			--[[:::   	<-- 절대로 지우지 말아주세요!!		:::::::::::::::::::::::::::::--]]
+--[[::::::::--]]  local MapNo = {}					--[[:::   	<-- 절대로 지우지 말아주세요!!		:::::::::::::::::::::::::::::--]]
+--[[::::::::--]]  local GameMaster_List = {}		--[[:::   	<-- 절대로 지우지 말아주세요!!		:::::::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::: 아래 "TEST_1"를 절대 관리자 이름으로 변경해 주세요																:::::::::::::
+-- ::::::::: ※ 주의!!   관리자 등록 시, 권한 상관없이 모든 명령어를 사용할 수 있습니다!												:::::::::::::
+--[[::::::::--]] GameMaster_List 	= { "TEST_1", "톱톱이", "톱이", "알런"}															
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::: 아래 "ㅌ"과 "ㅈ"은  초성 명령어 입니다. 초성으로만 변경가능합니다.						:::::::::::::::::::::::::::::::::::::::::
+-- ::::::::: ※ 주의!!   유저의 이름과 초성이 동일하면, 오작동 됩니다!!!								:::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+--[[::::::::--]]  local CommNo = "ㅌ" 																			 --[[::::::::--]]
+--[[::::::::--]]  local CommVolume = "ㅈ" 																		 --[[::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::: 관리자 번호를 저장할 개인 변수 번호를 입력해 주세요																:::::::::::::::::
+-- ::::::::: ※ 주의!!   지정된 번호는 다른 곳에서 사용되면 안됩니다!!														:::::::::::::::::
+-- :::::::::																									:::::::::::::::::
+--[[::::::::--]]  local AdminNo = 180	 																		--[[:::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::: 강제 이동 시, 이동 시킬 맵 번호와, X Y 좌표를 이벤트 기준으로 입력해 주세요.						:::::::::::::::::::::::::::::::::
+-- ::::::::: 강제 이동 시, 이동 시킬 맵 번호만 입력하면, 해당 좌표로 대상은 강제 이동합니다.						:::::::::::::::::::::::::::::::::
+-- ::::::::: 이동 번호 추가시, MapMax의 숫자도 마지막 번호로 변경해 주세요,									:::::::::::::::::::::::::::::::::
+-- ::::::::: 																					:::::::::::::::::::::::::::::::::
+-- ::::::::: ※ 주의!!   지정된 번호는 다른 곳에서 사용되면 안됩니다!!										:::::::::::::::::::::::::::::::::
+-- ::::::::: ※ 주의!!   네코랜드 버그로 인해, 현재 대상을 죽여서 이동하는 방식을 사용합니다.						:::::::::::::::::::::::::::::::::
+-- :::::::::																									:::::::::::::::::
+--[[::::::::--]]  local MapMax = 1	 																			 --[[::::::::--]]
+--[[::::::::--]]--MapNo[0] = {	No = 	맵번호 	,	x = 이벤트 X좌표값	 ,	y = 이벤트 Y좌표값		}					--[[:::::::::--]]
+--[[::::::::--]]  MapNo[1] = {	No = 	38 		,	x = 15	 			 ,	y = 16					}			 --[[::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::: 자신의 게임 모드를 입력해주세요!!!														:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임에  세이콜백(sayCallback)을 사용 안하는 경우,   Say_Types = 1					:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임이  세이콜백(sayCallback)을 사용 하는 경우,    Say_Types = 2					:::::::::::::::::::::::::::::::::
+-- :::::::::::::																				:::::::::::::::::::::::::::::::::
+--[[::::::::--]]  local Say_Types = 1															 --[[::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::: 자신의 게임 모드를 입력해주세요!!!														:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임이  가로 모드인 경우,   Type = 0											:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임이  세로 모드인 경우,   Type = 1											:::::::::::::::::::::::::::::::::
+-- :::::::::::::																				:::::::::::::::::::::::::::::::::
+--[[::::::::--]]  local Type = 0															 	--[[:::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::: 자신의 게임 모드를 입력해주세요!!!														:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임에  리워드콜백을 이미 사용하는 경우,		WorldEvnt_Types = 1						:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임에  리워드콜백을 사용 안하는 경우,		WorldEvnt_Types = 2					:::::::::::::::::::::::::::::::::
+-- :::::::::::::																				:::::::::::::::::::::::::::::::::
+--[[::::::::--]]  local WorldEvnt_Types = 1														 --[[::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::: 																				:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 경험치 / 골드 이벤트 정보를 저장할, 월드 변수를 입력해주세요!!								:::::::::::::::::::::::::::::::::
+-- ::::::::::::: 본인의 게임이  세로 모드인 경우,   Type = 1											:::::::::::::::::::::::::::::::::
+--[[::::::::--]]  local WorldEvnt_Type	= 1														--[[:::::::::::::::::::::::::--]]
+--[[::::::::--]]  local WorldEvnt_Exp	= 2														--[[:::::::::::::::::::::::::--]]
+--[[::::::::--]]  local WorldEvnt_Glod	= 3													 	--[[:::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::				  																								:::::::::
+-- ::::::::	  명령어 모음				  																					:::::::::
+-- ::::::::	  아래의 ex)예제 명령어처럼 사용해 주세요!																			:::::::::
+-- ::::::::				  																								:::::::::
+-- ::::::::	  Admin_Level[기능]은 해당 명령어 기능의 권한 설정입니다.																:::::::::
+-- ::::::::	  Admin_Level[기능] = 0 은  권한이 없는 플레이어 입니다.																:::::::::
+-- ::::::::	  Admin_Level[기능] = 1 은  1단계 명령어를 사용이 가능합니다.															:::::::::
+-- ::::::::	 Admin_Level[기능]  = 2 은  1,2단계 명령어를 사용이 가능합니다.														:::::::::
+-- ::::::::				  																								:::::::::
+-- ::::::::	  변수 설정은 운영자만 사용하시는 것을 권장합니다.																		:::::::::
+-- ::::::::	  운영자는 모두 사용이 가능합니다.																					:::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+			Admin_Level["/알림"] = 1		--/알림		알림내용									ex) /알림 안녕하세요!
+
+			Admin_Level["/공지"] = 1		--/공지		공지사항내용								ex) /공지 안녕하세요!
+			
+			Admin_Level["/이벤트"] = 1
+										--이벤트 시작 ↓↓↓↓↓↓
+										--/이벤트		경험치	ㅌ증가량							ex)	/이벤트 경험치	ㅌ50
+										--/이벤트		골드		ㅌ증가량							ex)	/이벤트 골드	ㅌ50
+										
+										--이벤트 종료 ↓↓↓↓↓↓
+										--/이벤트	종료											ex)	/이벤트 종료
+										
+										--※ 이벤트의 숫자는 % 지급 입니다.							ex) 200% => 2배   50%	->	0.5배
+										
+			Admin_Level["/점검"] = 1		--/점검		게임 종료 시간 입력(초)						ex) /점점 10
+
+			Admin_Level["/소환"] = 1		--/소환		대상 이름									ex) /소환 TEST_1
+
+			Admin_Level["/출두"] = 1		--/출두		대상 이름									ex) /출두 TEST_1
+
+			Admin_Level["/회수"] = 1		--/회수		대상 이름	ㅌ아이템 번호	ㅈ회수량				ex) /회수 TEST_1 ㅌ1 ㅈ1	
+										--/회수		대상 이름	ㅌ아이템 번호,아이템 번호	ㅈ지급량,지급량	ex) /회수 TEST_1 ㅌ1,1 ㅈ1,1  (일괄 회수시)
+			Admin_Level["/지급"] = 1		--/지급		대상 이름	ㅌ아이템 번호	ㅈ회수량				ex) /지급 TEST_1 ㅌ1 ㅈ1	
+										--/지급		대상 이름	ㅌ아이템 번호,아이템 번호	ㅈ지급량,지급량	ex) /지급 TEST_1 ㅌ1,1 ㅈ1,1  (일괄 회수시)
+			Admin_Level["/버프부여"] = 1	--/버프부여	대상 이름	ㅌ 부여할 버프 번호					ex) /버프부여 TEST_1 ㅌ1
+
+			Admin_Level["/버프제거"] = 1	--/버프제거	대상 이름	ㅌ 제거할 버프 번호					ex) /버프제거 TEST_1 ㅌ1
+			
+			Admin_Level["/스킬추가"] = 1	--/스킬추가	대상 이름	ㅌ 추가할 스킬 번호					ex) /스킬추가 TEST_1 ㅌ1
+			
+			Admin_Level["/스킬제거"] = 1	--/스킬제거	대상 이름	ㅌ 제거할 스킬 번호					ex) /스킬제거 TEST_1 ㅌ1
+			
+			Admin_Level["/골드지급"] = 1	--/골드지급	대상 이름	ㅌ 추가할 골드량						ex) /골드지급 TEST_1 ㅌ1
+			
+			Admin_Level["/골드회수"] = 1	--/골드회수	대상 이름	ㅌ 제거할 골드량						ex) /골드회수 TEST_1 ㅌ1
+			
+			Admin_Level["/골드확인"] = 1	--/골드확인	대상 이름									ex) /골드확인 TEST_1
+
+			Admin_Level["/체력회복"] = 1	--/체력회복	대상 이름	ㅌ 체력 회복량						ex) /체력회복 TEST_1 ㅌ1
+			
+			Admin_Level["/체력감소"] = 1	--/체력감소	대상 이름	ㅌ 체력 감소량						ex) /체력감소 TEST_1 ㅌ1
+
+			Admin_Level["/마력회복"] = 1	--/마력회복	대상 이름	ㅌ 마력 회복량						ex) /마력회복 TEST_1 ㅌ1
+			
+			Admin_Level["/마력감소"] = 1	--/마력감소	대상 이름	ㅌ 마력 감소량						ex) /마력감소 TEST_1 ㅌ1
+			
+			Admin_Level["/피로회복"] = 1	--/피로회복	대상 이름	ㅌ 피로 회복량						ex) /피로회복 TEST_1 ㅌ1
+			
+			Admin_Level["/피로감소"] = 1	--/피로감소	대상 이름	ㅌ 피로 감소량						ex) /피로감소 TEST_1 ㅌ1
+			
+			Admin_Level["/변수확인"] = 1	--/변수확인	대상 이름	ㅌ 변수 번호						ex) /변수확인 TEST_1 ㅌ1
+			
+			Admin_Level["/변수설정"] = 9	--/변수설정	대상 이름	ㅌ 변수 번호	ㅈ변수 설정 값			ex) /변수설정 TEST_1 ㅌ1 ㅈ1
+			
+			Admin_Level["/스텟확인"] = 1	--/스텟확인	대상 이름	ㅌ 스텟 번호						ex) /스텟확인 TEST_1 ㅌ1
+			
+			Admin_Level["/스텟설정"] = 1	--/스텟설정	대상 이름	ㅌ 스텟 번호	ㅈ스텟 설정 값			ex) /스텟설정 maroc ㅌ1 ㅈ1000000
+										--::::::::::::::::::::::::::::::::::	스텟 번호	::::::::::::::::::::::::::::::::::::::::::::::
+										--::	ATTACK = 0 	DEFENSE = 1 	MAGIC_ATTACK = 2 	MAGIC_DEFENSE = 3 	AGILITY = 4 	::
+										--::	LUCKY = 5  	HP = 6 MP = 7 	CUSTOM_1 = 101 		CUSTOM_32 = 132 					::
+										--::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+										
+			Admin_Level["/공용실행"] = 1	--/공용실행	대상 이름	ㅌ 이벤트 번호						ex) /공용실행 TEST_1 ㅌ1
+
+			Admin_Level["/가방제거"] = 1	--/가방제거	대상 이름	ㅌ 아이템 번호(최대 값 입력)			ex) /가방제거 TEST_1 ㅌ1	
+	
+			Admin_Level["/모든스킬제거"] = 1--/모든스킬제거 	대상 이름									ex) /모든스킬제거 TEST_1		
+
+			Admin_Level["/말풍선"] = 1	--/말풍선		대상 이름	ㅌ 말풍선내용						ex) /말풍선 앶 ㅌㅁㅁㅁㅁ		
+			
+			Admin_Level["/아이템확인"] = 1	--/아이템확인 	대상 이름	ㅌ 확인할 아이템 번호					ex) /아이템확인 TEST_1 ㅌ1		
+
+			Admin_Level["/아이템랭킹"] = 1	--/아이템랭킹 	제외 이름 	ㅌ 확인할 아이템 번호					ex) /아이템랭킹 TEST_1 ㅌ1
+
+			Admin_Level["/권한설정"] = 1	--/권한설정	대상 이름	ㅌ 1								ex) /권한설정 TEST_1 ㅌ1
+
+			Admin_Level["/강제이동"] = 1	--/강제이동	대상 이름	ㅌ 맵 번호							ex) /강제이동 TEST_1 ㅌ1
+			
+			Admin_Level["/필드변수확인 "] = 1	--/필드변수확인 	대상 이름	ㅌ 변수 번호						ex) /필드변수확인  TEST_1 ㅌ1
+			
+			Admin_Level["/필드변수설정 "] = 9	--/필드변수설정 	대상 이름	ㅌ 변수 번호	ㅈ변수 설정 값			ex) /필드변수설정  TEST_1 ㅌ1 ㅈ1
+
+			Admin_Level["/월드변수확인 "] = 1	--/월드변수확인 	대상 이름	ㅌ 변수 번호						ex) /월드변수확인  TEST_1 ㅌ1
+			
+			Admin_Level["/월드변수설정 "] = 9	--/월드변수설정 	대상 이름	ㅌ 변수 번호	ㅈ변수 설정 값			ex) /월드변수설정  TEST_1 ㅌ1 ㅈ1
+
+			Admin_Level["/아이템장착해제 "] = 1	--/아이템장착해제 	대상 이름							ex) /월드변수확인  TEST_1
+
+			Admin_Level["/유저변수수정 "] = 1	--/유저변수수정 	대상 이름	ㅌ 변수 번호	ㅈ변수 설정 값			ex) /월드변수설정  TEST_1 ㅌ1 ㅈ1
+			
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- :::::::::::::  							아래의 스크립트는 건드실 필요가 없습니다.											:::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+--[[--]]	function SplitString(str, pat)				--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   local t = {}								--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   local fpat = "(.-)" .. pat				--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   local last_end = 1						--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   local s, e, cap = str:find(fpat, 1)		--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   while s do								--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	      if s ~= 1 or cap ~= "" then			--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	         table.insert(t,cap)				--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	      end									--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	     last_end = e+1							--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	     s, e, cap = str:find(fpat, last_end)	--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   end										--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   if last_end <= #str then					--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	      cap = str:sub(last_end)				--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	      table.insert(t, cap)					--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   end										--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	   return t									--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	end											--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+--[[--]]	function Waits(seconds)						--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	local start = os.time()						--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	repeat until os.time() > start + seconds 	--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+--[[--]]	end											--[[:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--]]
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- :::::::::::::  							아래의 스크립트는 건드실 필요가 없습니다.											:::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+--[[--]]	if WorldEvnt_Types == 1 then
+--[[--]]	Server.rewardCallback = function(me, monster, damage)
+--[[--]]	local E_0 = Server.GetWorldVar(WorldEvnt_Type)
+--[[--]]	local E_1 = Server.GetWorldVar(WorldEvnt_Exp)
+--[[--]]	local E_2 = Server.GetWorldVar(WorldEvnt_Glod)
+--[[--]]	if E_0 == 1 then
+--[[--]]	local expVlue = (E_1 * 0.01)
+--[[--]]	local expBase = monster.monsterData.dropEXP 
+--[[--]]	local expPlus = expBase * expVlue
+--[[--]]	me.AddEXP(expPlus-expBase)
+--[[--]]	expVlue = 0
+--[[--]]	end
+--[[--]]	if E_0 == 2 then
+--[[--]]	local GlodVlue = (E_2 * 0.01)
+--[[--]]	local GlodBaseMin = math.abs(monster.monsterData.dropMinGameMoney)
+--[[--]]	local GlodBaseMax = monster.monsterData.dropMaxGameMoney
+--[[--]]	local GlodPlus = rand(GlodBaseMin,GlodBaseMax+1)
+--[[--]]	local GlodVV = (GlodPlus*GlodVlue)
+--[[--]]	me.AddGameMoney(GlodVV - GlodPlus)
+--[[--]]	GlodVlue = 0
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif WorldEvnt_Types == 2 then
+--[[--]]	Server.onUnitDead.Add(function(target, attacker)
+--[[--]]	local E_0 = Server.GetWorldVar(WorldEvnt_Type)
+--[[--]]	local E_1 = Server.GetWorldVar(WorldEvnt_Exp)
+--[[--]]	local E_2 = Server.GetWorldVar(WorldEvnt_Glod)
+--[[--]]	if E_0 == 1 then
+--[[--]]	local expVlue = (E_1 * 0.01)
+--[[--]]	if target.type == 2 then
+--[[--]]	local expBase = target.monsterData.dropEXP 
+--[[--]]	local expPlus = expBase * expVlue
+--[[--]]	if attacker.type == 0 then
+--[[--]]	attacker.AddEXP(expPlus-expBase)
+--[[--]]	expVlue = 0	
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	if E_0 == 2 then
+--[[--]]	if target.type == 2 then
+--[[--]]	local GlodVlue = (E_2 * 0.01)
+--[[--]]	local GlodBaseMin = math.abs(target.monsterData.dropMinGameMoney)
+--[[--]]	local GlodBaseMax = target.monsterData.dropMaxGameMoney
+--[[--]]	local GlodPlus = rand(GlodBaseMin,GlodBaseMax+1)
+--[[--]]	local GlodVV = (GlodPlus*GlodVlue)
+--[[--]]	if attacker.type == 0 then
+--[[--]]	attacker.AddGameMoney(GlodVV - GlodPlus)
+--[[--]]	GlodVlue = 0
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	)
+--[[--]]	end
+--[[--]]	function Evnet_World(unit)
+--[[--]]	local Exp_Text = ""
+--[[--]]	local Glod_Text = ""
+--[[--]]	Waits(2)
+--[[--]]	local E_0 = Server.GetWorldVar(WorldEvnt_Type)
+--[[--]]	local E_1 = Server.GetWorldVar(WorldEvnt_Exp)
+--[[--]]	local E_2 = Server.GetWorldVar(WorldEvnt_Glod)
+--[[--]]	if Server.GetWorldVar(WorldEvnt_Type) == 1 then
+--[[--]]	Exp_Text = "<color=#f4ee35>경험치 "..(E_1*0.01).."배 이벤트 중!</color>"
+--[[--]]	unit.FireEvent("Commod_ENotice_Close")
+--[[--]]	unit.FireEvent("Commod_ENotice_Show",Exp_Text,Type)
+--[[--]]	elseif  Server.GetWorldVar(WorldEvnt_Type) == 2 then
+--[[--]]	Glod_Text = "<color=#f4ee35>골드 "..(E_2*0.01).."배 이벤트 중!</color>"
+--[[--]]	unit.FireEvent("Commod_ENotice_Close")
+--[[--]]	unit.FireEvent("Commod_ENotice_Show",Glod_Text,Type)
+--[[--]]	end
+--[[--]]	end
+--[[--]]	Server.onJoinPlayer.Add(Evnet_World)
+--[[
+구매자 기능 건의
+1, 전체 유저 아이템 지급량을
+2, 게임 내부에서 공지 사항을 남기면 확인이 가능하도록	- 따로 명령어를 통해서 창이 출력되도록 구성(버튼은 선택)
+3, 레벨 변경 기능
+4, 플레이어 벤 기능
+5, 아이템 일괄 판매 기능
+--]]
+--[[--]]	local Commond_List ={}
+--[[--]]	Commond_List[1] = "/알림"
+--[[--]]	Commond_List[2] = "/공지"
+--[[--]]	Commond_List[3] = "/점검"
+--[[--]]	Commond_List[4] = "/소환"
+--[[--]]	Commond_List[5] = "/출두"
+--[[--]]	Commond_List[6] = "/회수"
+--[[--]]	Commond_List[7] = "/지급"
+--[[--]]	Commond_List[8] = "/버프부여"
+--[[--]]	Commond_List[9] = "/버프제거"
+--[[--]]	Commond_List[10] = "/스킬추가"
+--[[--]]	Commond_List[11] = "/스킬제거"
+--[[--]]	Commond_List[12] = "/골드지급"
+--[[--]]	Commond_List[13] = "/골드회수"
+--[[--]]	Commond_List[14] = "/골드확인"
+--[[--]]	Commond_List[15] = "/체력회복"
+--[[--]]	Commond_List[16] = "/체력감소"
+--[[--]]	Commond_List[17] = "/마력회복"
+--[[--]]	Commond_List[18] = "/마력감소"
+--[[--]]	Commond_List[19] = "/피로회복"
+--[[--]]	Commond_List[20] = "/피로감소"
+--[[--]]	Commond_List[21] = "/변수확인"
+--[[--]]	Commond_List[22] = "/변수설정"
+--[[--]]	Commond_List[23] = "/스텟확인"
+--[[--]]	Commond_List[24] = "/스텟설정"
+--[[--]]	Commond_List[25] = "/공용실행"
+--[[--]]	Commond_List[26] = "/가방제거"
+--[[--]]	Commond_List[27] = "/모든스킬제거"
+--[[--]]	Commond_List[28] = "/말풍선"
+--[[--]]	Commond_List[29] = "/아이템확인"
+--[[--]]	Commond_List[30] = "/아이템랭킹"
+--[[--]]	Commond_List[31] = "/권한설정"
+--[[--]]	Commond_List[32] = "/강제이동"
+--[[--]]	Commond_List[33] = "/이벤트"
+--[[--]]	Commond_List[34] = "/필드변수확인"
+--[[--]]	Commond_List[35] = "/필드변수설정"
+--[[--]]	Commond_List[36] = "/월드변수확인"
+--[[--]]	Commond_List[37] = "/월드변수설정"
+--[[--]]	Commond_List[38] = "/아이템장착해제"
+--[[--]]	Commond_List[39] = "/유저변수수정"
+--[[--]]	function Commond_List_On(unit,No,Find_Commond,Find_Commond_Value)
+--[[--]]	local Item_CommNo = nil
+--[[--]]	local CommName = nil
+--[[--]]	local Item_CommVolume = nil
+--[[--]]	local SetItemNo_List = {}
+--[[--]]	local SetItemCount_List = {}
+--[[--]]	local P_Admin_Level = unit.GetVar(AdminNo) 
+--[[--]]	local Commond_Text_Lv = 0
+--[[--]]	local Find_Txt_Value = Find_Commond_Value			
+--[[--]]	local CommNo_Find_Txt = " "..CommNo
+--[[--]]	local CommNo_Find_Start, CommNo_Find_End = string.find(Find_Txt_Value, CommNo_Find_Txt)
+--[[--]]	local CommNo_Find_Commond = string.sub(Find_Txt_Value, CommNo_Find_Start, CommNo_Find_End)
+--[[--]]	local CommVolume_Find_Txt = " "..CommVolume
+--[[--]]	local CommVolume_Find_Start, CommVolume_Find_End = string.find(Find_Txt_Value, CommVolume_Find_Txt)
+--[[--]]	local CommVolume_Find_Commond = string.sub(Find_Txt_Value, CommVolume_Find_Start, CommVolume_Find_End)
+--[[--]]	if CommNo_Find_Start == nil and CommNo_Find_End == nil then
+--[[--]]	Commond_Text_Lv = 1
+--[[--]]	elseif CommNo_Find_Start ~= nil and CommNo_Find_End ~= nil then
+--[[--]]	Commond_Text_Lv = 2
+--[[--]]	if CommVolume_Find_Start == nil and CommVolume_Find_End == nil then
+--[[--]]	Commond_Text_Lv = 2
+--[[--]]	elseif CommVolume_Find_Start ~= nil and CommVolume_Find_End ~= nil then
+--[[--]]	Commond_Text_Lv = 3
+--[[--]]	end
+--[[--]]	end
+--[[--]]	if Commond_Text_Lv >= 0 then
+--[[--]]	end
+--[[--]]	if Commond_Text_Lv >= 1 then
+--[[--]]	CommName = string.sub(Find_Txt_Value, 2, #Find_Txt_Value)
+--[[--]]	end
+--[[--]]	if Commond_Text_Lv >= 2 then
+--[[--]]	if #Find_Txt_Value == CommNo_Find_End then
+--[[--]]	unit.SendCenterLabel(CommNo.."의 정보가 입력되지 않았습니다.")
+--[[--]]	return
+--[[--]]	else
+--[[--]]	CommName = string.sub(Find_Txt_Value, 2, CommNo_Find_Start-1)		
+--[[--]]	Item_CommNo = string.sub( Find_Txt_Value, CommNo_Find_Start+2, #Find_Txt_Value)
+--[[--]]	SetItemNo_List = SplitString(Item_CommNo,",")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	if Commond_Text_Lv >= 3 then
+--[[--]]	if #Find_Txt_Value == CommVolume_Find_End then
+--[[--]]	unit.SendCenterLabel(CommVolume.."의 정보가 입력되지 않았습니다.")
+--[[--]]	return
+--[[--]]	else
+--[[--]]	Item_CommNo = string.sub( Find_Txt_Value, CommNo_Find_Start+2, CommVolume_Find_Start)
+--[[--]]	Item_CommVolume = string.sub( Find_Txt_Value, CommVolume_Find_Start+2, #Find_Txt_Value)
+--[[--]]	SetItemNo_List = SplitString(Item_CommNo,",")
+--[[--]]	SetItemCount_List = SplitString(Item_CommVolume,",")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	--print("Item_CommNo : "..Item_CommNo)
+--[[--]]	--print("Item_CommVolume : "..Item_CommVolume)
+--[[--]]	if No == 1 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	Server.SendCenterLabel(Find_Commond_Value)
+--[[--]]	elseif No == 2 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	Server.FireEvent("Commod_Notice",Find_Commond_Value,Type)
+--[[--]]	elseif No == 3 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	local Csec = tonumber(string.sub(Find_Commond_Value, 1, #Find_Commond_Value))
+--[[--]]	if Csec ~= nil then
+--[[--]]	local today = os.date("*t")
+--[[--]]	local sec = today.sec
+--[[--]]	local EXTCONT = Csec
+--[[--]]	for Cont = 1, Csec do	
+--[[--]]	Waits(1)
+--[[--]]	Server.SendCenterLabel("<color=#FF0000>"..tostring(EXTCONT).."</color> 초 후, 점검이 진행될 예정입니다")
+--[[--]]	EXTCONT = Csec-Cont
+--[[--]]	end
+--[[--]]	if EXTCONT == 0 then
+--[[--]]	Waits(1)
+--[[--]]	Server.SendCenterLabel("게임을 종료합니다.")
+--[[--]]	Waits(1)
+--[[--]]	Server.FireEvent("ExitGame","30")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 4 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if (Find_Commond_Value == (" "..rp.unit.player.name)) then
+--[[--]]	rp.unit.SpawnAtFieldID(unit.field.dataID,unit.x,unit.y)
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 5 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if (Find_Commond_Value == (" "..rp.unit.player.name)) then
+--[[--]]	unit.SpawnAtFieldID(rp.unit.field.dataID,rp.unit.x,rp.unit.y)
+--[[--]]	end
+--[[--]]	end 
+--[[--]]	elseif No == 6 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("아이템 번호와 아이템 회수량을 입력해주세요. ex)/회수 대상이름 ㅌ회수아이템번호 ㅈ아이템회수수량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("아이템 회수량을 입력해주세요. ex)/회수 대상이름 ㅌ회수아이템번호 ㅈ아이템회수수량")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in pairs(SetItemNo_List) do
+--[[--]]	local Item_Count = rp.unit.field.GetUnit(FindsName).CountItem(tonumber(SetItemNo_List[SetItemNo_List_No]))		
+--[[--]]	if Item_Count > 0 then		
+--[[--]]	rp.unit.field.GetUnit(FindsName).RemoveItem(tonumber(SetItemNo_List[SetItemNo_List_No]),tonumber(SetItemCount_List[SetItemNo_List_No]),false)
+--[[--]]	rp.unit.SendCenterLabel(unit.name.."께서 "..(SetItemNo_List[SetItemNo_List_No]).."을 "..(SetItemCount_List[SetItemNo_List_No]).."개를 회수했습니다.")
+--[[--]]	unit.SendCenterLabel(rp.unit.name.."에게서 "..(SetItemNo_List[SetItemNo_List_No]).."을 "..(SetItemCount_List[SetItemNo_List_No]).."개 회수했습니다.")	
+--[[--]]	elseif Item_Count == 0 then
+--[[--]]	unit.SendCenterLabel(rp.unit.name.."은 "..(SetItemNo_List[SetItemNo_List_No]).."을 소지하고 있지 않습니다.")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 7 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("아이템 번호와 아이템 지급량을 입력해주세요. ex)/지급 대상이름 ㅌ지급아이템번호 ㅈ아이템지급수량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("아이템 지급량을 입력해주세요. ex)/지급 대상이름 ㅌ지급아이템번호 ㅈ아이템지급수량")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in pairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddItem(tonumber(SetItemNo_List[SetItemNo_List_No]),tonumber(SetItemCount_List[SetItemNo_List_No]),false)
+--[[--]]	rp.unit.SendCenterLabel(unit.name.."께서 "..(SetItemNo_List[SetItemNo_List_No]).."을 "..(SetItemCount_List[SetItemNo_List_No]).."개를 지급했습니다.")
+--[[--]]	unit.SendCenterLabel(rp.unit.name.."에게 "..(SetItemNo_List[SetItemNo_List_No]).."을 "..(SetItemCount_List[SetItemNo_List_No]).."개를 지급했습니다.")
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 8 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then		
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("버프번호를 입력해 주세요. ex)/버프부여 대상이름 ㅌ버프번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("부여할 버프번호를 입력해 주세요. ex)/버프부여 대상이름 ㅌ버프번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddBuff(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 9 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("버프번호를 입력해 주세요. ex)/버프제거 대상이름 ㅌ버프번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("제거할 버프번호를 입력해 주세요. ex)/버프제거 대상이름 ㅌ버프번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).RemoveBuff(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 10 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("스킬번호를 입력해 주세요.\n스킬레벨 미입력이 1레벨로 지급됩니다.\n ex)/스킬추가 대상이름 ㅌ스킬번호 ㅈ1스킬레벨")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("추가할 스킬번호를 입력해 주세요.\n스킬레벨 미입력이 1레벨로 지급됩니다.\n ex)/스킬제거 대상이름 ㅌ스킬번호 ㅈ1 스킬레벨")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddSkill(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif Commond_Text_Lv == 3 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("추가할 스킬번호를 입력해 주세요.\n스킬레벨 미 입력시, 1레벨로 지급됩니다.\n ex)/스킬제거 대상이름 ㅌ스킬번호 ㅈ1 스킬레벨")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddSkill(tonumber(SetItemNo_List[SetItemNo_List_No]),tonumber(SetItemCount_List[SetItemNo_List_No]),true)
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 11 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("스킬번호를 입력해 주세요.\n ex)/스킬제거 대상이름 ㅌ스킬번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("스킬번호를 입력해 주세요.\n ex)/스킬제거 대상이름 ㅌ스킬번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).RemoveSkill(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 12 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("지급 금액를 입력해 주세요.\n ex)/골드지급 대상이름 ㅌ지급액수")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("지급 금액를 입력해 주세요.\n ex)/골드지급 대상이름 ㅌ지급액수")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddGameMoney(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 13 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("회수 금액를 입력해 주세요.\n ex)/골드회수 대상이름 ㅌ회수액수")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("회수 금액를 입력해 주세요.\n ex)/골드회수 대상이름 ㅌ회수액수")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).UseGameMoney(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 14 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv >= 1 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 보유 골드는"..rp.unit.field.GetUnit(FindsName).gameMoney.."입니다.")
+--[[--]]	break
+--[[--]]	end
+--[[--]]	if #Server.players == i then
+--[[--]]	unit.SendCenterLabel(CommName.."님을 찾을 수 없습니다.\n접속한 플레이어만 찾을 수 있습니다.")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 15 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("체력 회복량을 입력해 주세요.\n ex)/체력회복 대상이름 ㅌ체력회복량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("체력 회복량을 입력해 주세요.\n ex)/체력회복 대상이름 ㅌ체력회복량")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddHP(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 16 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("체력 감소량을 입력해 주세요.\n ex)/체력감소 대상이름 ㅌ체력감소량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("체력 감소량을 입력해 주세요.\n ex)/체력감소 대상이름 ㅌ체력감소량")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddDamage(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 17 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("마력 회복량을 입력해 주세요.\n ex)/마력회복 대상이름 ㅌ마력회복량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("마력 회복량을 입력해 주세요.\n ex)/마력회복 대상이름 ㅌ마력회복량")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddMP(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 18 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("마력 감소량을 입력해 주세요.\n ex)/마력감소 대상이름 ㅌ마력감소량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("마력 감소량을 입력해 주세요.\n ex)/마력감소 대상이름 ㅌ마력감소량")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddMP(-(tonumber(SetItemNo_List[SetItemNo_List_No])))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 19 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("피로 회복량을 입력해 주세요.\n ex)/피로회복 대상이름 ㅌ피로회복량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("피로 회복량을 입력해 주세요.\n ex)/피로회복 대상이름 ㅌ피로회복량")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).AddFatigue(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 20 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("피로 감소량을 입력해 주세요.\n ex)/피로감소 대상이름 ㅌ피로감소량")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("피로 감소량을 입력해 주세요.\n ex)/피로감소 대상이름 ㅌ피로감소량")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).UseFatigue(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 21 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("개인 변수 번호를 입력해 주세요.\n ex)/변수확인 대상이름 ㅌ개인변수번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("개인 변수 번호를 입력해 주세요.\n ex)/변수확인 대상이름 ㅌ개인변수번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name..'의 변수'..SetItemNo_List[SetItemNo_List_No]..'는'..(rp.unit.field.GetUnit(FindsName).GetVar(tonumber(SetItemNo_List[SetItemNo_List_No]))..'입니다.'))
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 22 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("변수 번호와 변수내용(숫자)을 입력해주세요. ex)/변수설정 대상이름 ㅌ변수번호 ㅈ변수내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("변수 번호와 변수내용(숫자)을 입력해주세요. ex)/변수설정 대상이름 ㅌ변수번호 ㅈ변수내용")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in pairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).SetVar(tonumber(SetItemNo_List[SetItemNo_List_No]),tonumber(SetItemCount_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 23 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("확인할 스텟 번호를 입력해 주세요.\n ex)/스텟확인 대상이름 ㅌ스텟번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("확인할 스텟 번호를 입력해 주세요.\n ex)/스텟확인 대상이름 ㅌ스텟번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name..'의 스텟'..(SetItemNo_List[SetItemNo_List_No])..'번은'..rp.unit.field.GetUnit(FindsName).GetStat(tonumber(SetItemNo_List[SetItemNo_List_No]))..'입니다.')
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 24 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("스텟 번호와 스텟내용(숫자)을 입력해주세요. ex)/스텟설정 대상이름 ㅌ스텟번호 ㅈ스쳇내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("스텟 번호와 스텟내용(숫자)을 입력해주세요. ex)/스텟설정 대상이름 ㅌ스텟번호 ㅈ스쳇내용")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in pairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).SetStat(tonumber(SetItemNo_List[SetItemNo_List_No]),tonumber(SetItemCount_List[SetItemNo_List_No]))
+--[[--]]	rp.unit.field.GetUnit(FindsName).SendUpdated()
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 25 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("실행할 공용이벤트 번호를 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ공용이벤트번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("실행할 공용이벤트 번호를 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ공용이벤트번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name..'님의'..(SetItemNo_List[SetItemNo_List_No])..'번의 공용이벤트를 실행합니다.')
+--[[--]]	rp.unit.field.GetUnit(FindsName).StartGlobalEvent(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end		
+--[[--]]	elseif No == 26 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("실행할 공용이벤트 번호를 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ공용이벤트번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("실행할 공용이벤트 번호를 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ공용이벤트번호")
+--[[--]]	elseif Item_CommNo ~= nil then			
+--[[--]]	if Item_CommNo == "모두" then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	local SetItemNo_List = rp.unit.player.GetItems()
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in pairs(SetItemNo_List) do
+--[[--]]	local Find_P_GetItems_List = rp.unit.player.GetItems()
+--[[--]]	for GetItemNo, GetItemValue in pairs(Find_P_GetItems_List) do
+--[[--]]	local GetItem_No = rp.unit.player.GetItems()[GetItemNo].dataID
+--[[--]]	local GetItem_Count = rp.unit.player.GetItems()[GetItemNo].count
+--[[--]]	rp.unit.field.GetUnit(FindsName).RemoveItem(GetItem_No,GetItem_Count)
+--[[--]]	if GetItemValue == nil then
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 가방에 있는"..(#SetItemNo_List).. "개의 아이템을 모두 제거했습니다.")
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	else
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	local SetItemNo_List = rp.unit.player.GetItems()
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in pairs(SetItemNo_List) do
+--[[--]]	local Find_P_GetItems_List = rp.unit.player.GetItems()
+--[[--]]	for GetItemNo, GetItemValue in pairs(Find_P_GetItems_List) do
+--[[--]]	local GetItem_No = rp.unit.player.GetItems()[GetItemNo].dataID
+--[[--]]	local GetItem_Count = rp.unit.player.GetItems()[GetItemNo].count
+--[[--]]	if GetItem_No == tonumber(SetItemNo_List[SetItemNo_List_No]) then
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 가방에 있는"..(GetItem_No).. "번의 아이템을 "..(GetItem_Count).. "개 제거합니다.")
+--[[--]]	rp.unit.field.GetUnit(FindsName).RemoveItem(GetItem_No,GetItem_Count)
+--[[--]]	if GetItemValue == nil then
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 가방에 있는"..(GetItem_No).. "번의 아이템을 "..(GetItem_Count).. "개 제거했습니다.")
+--[[--]]	break
+--[[--]]	end
+--[[--]]	elseif GetItem_No ~= tonumber(SetItemNo_List[SetItemNo_List_No]) and GetItemNo == #Find_P_GetItems_List then
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 가방에는"..(GetItem_No).. "번 아이템이 없습니다.")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end			
+--[[--]]	elseif No == 27 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv >= 1 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 스킬을 모두 삭제합니다.")
+--[[--]]	rp.unit.field.GetUnit(FindsName).RemoveAllSkills()
+--[[--]]	break
+--[[--]]	end
+--[[--]]	if #Server.players == i then
+--[[--]]	unit.SendCenterLabel(CommName.."님을 찾을 수 없습니다.\n접속한 플레이어만 찾을 수 있습니다.")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 28 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.Say("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.Say("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	rp.unit.field.GetUnit(FindsName).Say(SetItemNo_List[SetItemNo_List_No])
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 29 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name..'는'..tonumber(SetItemNo_List[SetItemNo_List_No])..'번호 아이템을'..rp.unit.field.GetUnit(FindsName).CountItem(tonumber(SetItemNo_List[SetItemNo_List_No]))..'개 보유하고 입니다.')
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 30 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("제외대상(운영자)이름과 아이템 번호를 입력해 주세요.\n ex)/아이템랭킹 대상이름 ㅌ아이템 번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("제외대상(운영자)이름과 아이템 번호를 입력해 주세요.\n ex)/아이템랭킹 대상이름 ㅌ아이템 번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	local Top_Item = 0
+--[[--]]	local Top_Item_Name = 0
+--[[--]]	local Top_Item_id = 0
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	if CommName ~= (rp.unit.player.name)  then
+--[[--]]	local Now_Item = rp.unit.field.GetUnit(FindsName).CountItem(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	if Now_Item <= Top_Item then			
+--[[--]]	elseif Top_Item <= Now_Item then
+--[[--]]	Top_Item = rp.unit.field.GetUnit(FindsName).CountItem(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	Top_Item_Name = rp.unit.field.GetUnit(FindsName).name
+--[[--]]	Top_Item_id = rp.unit.field.GetUnit(FindsName).id
+--[[--]]	end
+--[[--]]	if i == #Server.players then
+--[[--]]	unit.SendCenterLabel(SetItemNo_List[SetItemNo_List_No].."번호 아이템을 보유 1위 플레이어는 "..Top_Item.."개 보유한 [ "..Top_Item_Name.." ]님 입니다.")							
+--[[--]]	else
+--[[--]]	unit.SendCenterLabel((rp.unit.player.name).."는 "..(SetItemNo_List[SetItemNo_List_No]).."번호 아이템을 "..(rp.unit.field.GetUnit(FindsName).CountItem(tonumber(SetItemNo_List[SetItemNo_List_No]))).."개 보유하고 입니다.")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 31 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	rp.unit.field.GetUnit(FindsName).SetVar(AdminNo,tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name..'의 권한은'..tonumber(SetItemNo_List[SetItemNo_List_No])..' 레벨입니다.')
+--[[--]]	rp.unit.field.GetUnit(FindsName).SendUpdated()
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end	
+--[[--]]	elseif No == 32 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("대화 내용을 입력해 주세요.\n ex)/공용실행 대상이름 ㅌ내화내용")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	for i = 1, MapMax do
+--[[--]]	if tonumber(SetItemNo_List[SetItemNo_List_No]) == MapNo[i].No then
+--[[--]]	rp.unit.SpawnAtFieldID(MapNo[i].No,tonumber(MapNo[i].x*32),tonumber(MapNo[i].y*32))
+--[[--]]	rp.unit.RespawnAt(tonumber(MapNo[i].x*32),tonumber(MapNo[i].y*32))
+--[[--]]	rp.unit.AddDamage(rp.unit.hp)
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name..'를 '..tonumber(SetItemNo_List[SetItemNo_List_No])..'번 맵으로 강제이동 시킵니다.')							
+--[[--]]	rp.unit.SendUpdated()
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 33 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	local Exp_Text	=	""
+--[[--]]	local Glod_Text	=	""	
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	if CommName == "종료" then
+--[[--]]	if Server.GetWorldVar(WorldEvnt_Type) == 0 then
+--[[--]]	unit.SendCenterLabel("진행중인 이벤트가 없습니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	elseif Server.GetWorldVar(WorldEvnt_Type) > 0 then
+--[[--]]	Server.SendCenterLabel("이벤트가 종료 되었습니다!")
+--[[--]]	Server.FireEvent("Commod_ENotice_Close")
+--[[--]]	Server.SetWorldVar(WorldEvnt_Type,0) 
+--[[--]]	Server.SetWorldVar(WorldEvnt_Exp,0)
+--[[--]]	Server.SetWorldVar(WorldEvnt_Glod,0)
+--[[--]]	end
+--[[--]]	else
+--[[--]]	unit.SendCenterLabel("명령어가 틀립니다.\n ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	end
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("명령어가 틀립니다.\n ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	if CommName == "경험치" then
+--[[--]]	if Server.GetWorldVar(WorldEvnt_Type) > 0 then
+--[[--]]	if Server.GetWorldVar(WorldEvnt_Type) == 2 then
+--[[--]]	unit.SendCenterLabel("이미 골드 이벤트가 진행 중입니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("이미 골드 이벤트를 종료 후 다시 명령어를 입력해주세요.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")									
+--[[--]]	elseif Server.GetWorldVar(WorldEvnt_Type) == 1 then
+--[[--]]	unit.SendCenterLabel("이미 경험치 이벤트가 진행 중입니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("명령어가 틀립니다.\n ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	else
+--[[--]]	unit.SendCenterLabel("진행중인 이벤트가 없습니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	end
+--[[--]]	elseif Server.GetWorldVar(WorldEvnt_Type) == 0 then
+--[[--]]	Server.SetWorldVar(WorldEvnt_Type,1)
+--[[--]]	Server.SetWorldVar(WorldEvnt_Exp,tonumber(SetItemNo_List[1]))
+--[[--]]	Server.SetWorldVar(WorldEvnt_Glod,0)							
+--[[--]]	local E_0 = Server.GetWorldVar(WorldEvnt_Type)
+--[[--]]	local E_1 = Server.GetWorldVar(WorldEvnt_Exp)
+--[[--]]	local E_2 = Server.GetWorldVar(WorldEvnt_Glod)
+--[[--]]	if E_0 == 1 then
+--[[--]]	Exp_Text = "<color=#f4ee35>경험치 "..(E_1*0.01).."배 이벤트 중!</color>"
+--[[--]]	Server.FireEvent("Commod_ENotice_Close")
+--[[--]]	Server.FireEvent("Commod_ENotice_Show",Exp_Text,Type)
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif CommName == "골드" then
+--[[--]]	if Server.GetWorldVar(WorldEvnt_Type) > 0 then
+--[[--]]	if Server.GetWorldVar(WorldEvnt_Type) == 2 then
+--[[--]]	unit.SendCenterLabel("이미 골드 이벤트가 진행 중입니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("이미 골드 이벤트를 종료 후 다시 명령어를 입력해주세요.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")									
+--[[--]]	elseif Server.GetWorldVar(WorldEvnt_Type) == 1 then
+--[[--]]	unit.SendCenterLabel("이미 경험치 이벤트가 진행 중입니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("명령어가 틀립니다.\n ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	else
+--[[--]]	unit.SendCenterLabel("진행중인 이벤트가 없습니다.")
+--[[--]]	Waits(1)
+--[[--]]	unit.SendCenterLabel("ex)/이벤트 경험치 ㅌ증가량 또는 /이벤트 골드 ㅌ증가량 또는 /이벤트 종료")
+--[[--]]	end
+--[[--]]	elseif Server.GetWorldVar(WorldEvnt_Type) == 0 then
+--[[--]]	Server.SetWorldVar(WorldEvnt_Type,2)
+--[[--]]	Server.SetWorldVar(WorldEvnt_Exp,0)
+--[[--]]	Server.SetWorldVar(WorldEvnt_Glod,tonumber(SetItemNo_List[1]))
+--[[--]]	local E_0 = Server.GetWorldVar(WorldEvnt_Type)
+--[[--]]	local E_1 = Server.GetWorldVar(WorldEvnt_Exp)
+--[[--]]	local E_2 = Server.GetWorldVar(WorldEvnt_Glod)
+--[[--]]	if E_0 == 2 then
+--[[--]]	Glod_Text = "<color=#f4ee35>골드 "..(E_2*0.01).."배 이벤트 중!</color>"
+--[[--]]	Server.FireEvent("Commod_ENotice_Close")
+--[[--]]	Server.FireEvent("Commod_ENotice_Show",Glod_Text,Type)
+--[[--]]	end	
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 34 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("변결할 필드번호 또는 필드이름과 필드변수 번호를 입력해 주세요.\n ex)/필드변수확인 필드번호 또는 필드이름 ㅌ필드변수번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then	
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("변결할 필드번호 또는 필드이름과 필드변수 번호를 입력해 주세요.\n ex)/필드변수확인 필드번호 또는 필드이름 ㅌ필드변수번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	local fields_Chack = 0
+--[[--]]	if type(tonumber(CommName)) == "number" then
+--[[--]]	for fields_List_No, fields_List_Value in pairs(Server.fields) do
+--[[--]]	local fields_List_name = fields_List_Value.name
+--[[--]]	local fields_List_dataID = fields_List_Value.dataID
+--[[--]]	if fields_List_dataID == tonumber(CommName) then
+--[[--]]	local GetField_Var = Server.GetField(fields_List_dataID).GetFieldVar(tonumber(SetItemNo_List[1]))
+--[[--]]	unit.SendCenterLabel(CommName.."번 필드의 "..SetItemNo_List[1].."변수의 값은 "..GetField_Var.."입니다.")	
+--[[--]]	fields_Chack = 1
+--[[--]]	break
+--[[--]]	elseif fields_List_No == #Server.fields and fields_Chack == 0 then
+--[[--]]	unit.SendCenterLabel("해당 필드에 사람이 없어 변수를 확인 할 수 없습니다.")	
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif type(CommName) == "string" then
+--[[--]]	for fields_List_No, fields_List_Value in pairs(Server.fields) do
+--[[--]]	local fields_List_name = fields_List_Value.name
+--[[--]]	local fields_List_dataID = fields_List_Value.dataID
+--[[--]]	if fields_List_name == (CommName) then
+--[[--]]	local GetField_Var = Server.GetField(fields_List_Value.dataID).GetFieldVar(tonumber(SetItemNo_List[1]))
+--[[--]]	unit.SendCenterLabel(fields_List_name.." 필드의 "..SetItemNo_List[1].."변수의 값은 "..GetField_Var.."입니다.")	
+--[[--]]	fields_Chack = 1
+--[[--]]	break
+--[[--]]	elseif fields_List_No == #Server.fields and fields_Chack == 0 then
+--[[--]]	unit.SendCenterLabel("해당 필드에 사람이 없어 변수를 확인 할 수 없습니다.")	
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 35 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("변결할 필드번호 또는 필드이름과 필드변수 번호를 입력해 주세요.\n ex)/필드변수설정 필드번호 또는 필드이름 ㅌ필드변수번호 ㅈ변경변수숫자")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("변결할 필드번호 또는 필드이름과 필드변수 번호를 입력해 주세요.\n ex)/필드변수설정 필드번호 또는 필드이름 ㅌ필드변수번호 ㅈ변경변수숫자")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	local fields_Chack = 0
+--[[--]]	if type(tonumber(CommName)) == "number" then
+--[[--]]	for fields_List_No, fields_List_Value in pairs(Server.fields) do
+--[[--]]	local fields_List_name = fields_List_Value.name
+--[[--]]	local fields_List_dataID = fields_List_Value.dataID
+--[[--]]	if fields_List_dataID == tonumber(CommName) then
+--[[--]]	Server.GetField(fields_List_dataID).SetFieldVar(tonumber(SetItemNo_List[1]),tonumber(SetItemCount_List[1]))
+--[[--]]	local GetField_Var = Server.GetField(fields_List_dataID).GetFieldVar(tonumber(SetItemNo_List[1]))
+--[[--]]	unit.SendCenterLabel(fields_List_name.." 필드의 "..SetItemNo_List[1].."변수의 값울 "..GetField_Var.."로 변경 했습니다.")	
+--[[--]]	fields_Chack = 1
+--[[--]]	break
+--[[--]]	elseif fields_List_No == #Server.fields and fields_Chack == 0 then
+--[[--]]	unit.SendCenterLabel("해당 필드에 사람이 없어 변수를 변경 할 수 없습니다.")	
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif type(CommName) == "string" then
+--[[--]]	for fields_List_No, fields_List_Value in pairs(Server.fields) do
+--[[--]]	local fields_List_name = fields_List_Value.name
+--[[--]]	local fields_List_dataID = fields_List_Value.dataID
+--[[--]]	if fields_List_name == (CommName) then
+--[[--]]	Server.GetField(fields_List_dataID).SetFieldVar(tonumber(SetItemNo_List[1]),tonumber(SetItemCount_List[1]))
+--[[--]]	local GetField_Var = Server.GetField(fields_List_dataID).GetFieldVar(tonumber(SetItemNo_List[1]))
+--[[--]]	unit.SendCenterLabel(fields_List_name.." 필드의 "..SetItemNo_List[1].."변수의 값울 "..GetField_Var.."로 변경 했습니다.")	
+--[[--]]	fields_Chack = 1
+--[[--]]	break
+--[[--]]	elseif fields_List_No == #Server.fields and fields_Chack == 0 then
+--[[--]]	unit.SendCenterLabel("해당 필드에 사람이 없어 변수를 변경 할 수 없습니다.")	
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 36 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("월드 변수 번호를 입력해 주세요.\n ex)/월드변수확인 운영자이름 ㅌ월드변수번호")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("월드 변수 번호를 입력해 주세요.\n ex)/월드변수확인 운영자이름 ㅌ월드변수번호")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	local GetWorld_Var = Server.GetWorldVar(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	unit.SendCenterLabel("월드변수 "..SetItemNo_List[SetItemNo_List_No].." 값은 "..GetWorld_Var..'입니다.')
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	elseif No == 37 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("월드변수 번호와 월드변수내용(숫자)을 입력해주세요. ex)/월드변수설정 운영자이름 ㅌ월드변수번호 ㅈ변수내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("월드변수 번호와 월드변수내용(숫자)을 입력해주세요. ex)/월드변수설정 운영자이름 ㅌ월드변수번호 ㅈ변수내용")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("월드변수 번호와 월드변수내용(숫자)을 입력해주세요. ex)/월드변수설정 운영자이름 ㅌ월드변수번호 ㅈ변수내용")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for SetItemNo_List_No, SetItemNo_List_Value in ipairs(SetItemNo_List) do
+--[[--]]	Server.SetWorldVar(tonumber(SetItemNo_List[SetItemNo_List_No]),tonumber(SetItemCount_List[SetItemNo_List_No]))
+--[[--]]	local GetWorld_Var = Server.GetWorldVar(tonumber(SetItemNo_List[SetItemNo_List_No]))
+--[[--]]	unit.SendCenterLabel("월드변수 "..SetItemNo_List[SetItemNo_List_No].." 값은 "..GetWorld_Var..'입니다.')
+--[[--]]	break
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	--아이템장착해제
+--[[--]]	elseif No == 38 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv >= 1 then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	unit.SendCenterLabel(rp.unit.player.name.."님의 장착중인 아이템을 모두 장착 해제합니다.")
+--[[--]]	rp.unit.SendCenterLabel(unit.player.name.."님께서 장착중인 아이템을 모두 장착 해제합니다.")
+--[[--]]	local inven = rp.unit.field.GetUnit(FindsName).player.GetItems()
+--[[--]]	for i = 1, #inven do
+--[[--]]	if inven[i] ~= nil then
+--[[--]]	local itemData = Server.GetItem(inven[i].dataID)
+--[[--]]	rp.unit.UnequipItem(inven[i].id)
+--[[--]]	end
+--[[--]]	end
+--[[--]]	local FindsName = rp.unit.id
+--[[--]]	rp.unit.field.GetUnit(FindsName).StartGlobalEvent(23)--캐릭터 변경대상 공용실행
+--[[--]]	break
+--[[--]]	end
+--[[--]]	if #Server.players == i then
+--[[--]]	unit.SendCenterLabel(CommName.."님을 찾을 수 없습니다.\n접속한 플레이어만 찾을 수 있습니다.")
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--setStringvar
+--[[--]]	elseif No == 39 and Find_Commond == Commond_List[No] or Admin_Level[Commond_List[No]] == P_Admin_Level then
+--[[--]]	if Commond_Text_Lv == 1 then
+--[[--]]	unit.SendCenterLabel("설정번호와 변수내용을 입력해주세요. ex)/유저변수수정 유저이름 ㅌ설정번호 ㅈ변수내용")
+--[[--]]	elseif Commond_Text_Lv == 2 then
+--[[--]]	unit.SendCenterLabel("설정번호와 변수내용을 입력해주세요. ex)/유저변수수정 유저이름 ㅌ설정번호 ㅈ변수내용")
+--[[--]]	elseif Commond_Text_Lv >= 3 then
+--[[--]]	if Item_CommNo == nil then
+--[[--]]	unit.SendCenterLabel("설정번호와 변수내용을 입력해주세요. ex)/유저변수수정 유저이름 ㅌ설정번호 ㅈ변수내용")
+--[[--]]	elseif Item_CommNo ~= nil then
+--[[--]]	for i, rp in ipairs(Server.players) do
+--[[--]]	if ((CommName) == (rp.unit.player.name)) then
+--[[--]]	local FinduserName = rp.unit.id
+--[[--]]	local setData = ''
+--[[--]]	if Item_CommVolume ~= 'nil' then
+--[[--]]	setData = Item_CommVolume
+--[[--]]	end
+--[[--]]	rp.unit.SendCenterLabel(unit.name.."의 설정 값을 변경하였습니다.")
+--[[--]]	unit.SendCenterLabel(rp.unit.name.."의 Stringvar ["..Item_CommNo.."] 값을 ["..rp.unit.GetStringVar(500).."] 에서 ["..setData.."]으로 변경")
+--[[--]]	--[[--]]   rp.unit.SetStringVar(tonumber(Item_CommNo),setData)
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+
+
+--[[--]]	end
+
+--[[--]]	function Commond_Say(unit,text)
+--[[--]]	local P_GM_Switch = "Off"
+--[[--]]	local P_Commond_Switch = "Off"
+--[[--]]	local P_Name = unit.player.name
+--[[--]]	local P_Admin_Level = unit.GetVar(AdminNo) 	
+--[[--]]	for GameMaster_List_No, GameMaster_List_Vlaue in ipairs(GameMaster_List) do	
+--[[--]]	if GameMaster_List_Vlaue == P_Name or P_Admin_Level > 0 then
+--[[--]]	P_GM_Switch = "On"
+--[[--]]	end
+--[[--]]	end
+--[[--]]	if P_GM_Switch == "On" then
+--[[--]]	for Commond_List_No, Commond_List_Vlaue in ipairs(Commond_List) do
+--[[--]]	local Find_Txt_Value = text
+--[[--]]	local Find_Txt = Commond_List[Commond_List_No]
+--[[--]]	local Find_Start, Find_End = string.find(Find_Txt_Value, Find_Txt)		
+--[[--]]	local Find_Commond = string.sub(Find_Txt_Value, 1, Find_End)
+--[[--]]	local Find_Commond_Value = nil
+--[[--]]	if #Find_Commond == #Find_Txt_Value then
+--[[--]]	Find_Commond_Value = nil
+--[[--]]	elseif  #Find_Commond < #Find_Txt_Value then
+--[[--]]	Find_Commond_Value = string.sub( Find_Txt_Value, Find_End+1, #Find_Txt_Value)
+--[[--]]	end	
+--[[--]]	if Commond_List[Commond_List_No] == Find_Commond and Find_Start == 1 then
+--[[--]]	if not Find_Commond_Value or Find_Commond_Value == nil then unit.SendCenterLabel("정보가 입력되지 않았습니다.") return end
+--[[--]]	Commond_List_On(unit,Commond_List_No,Find_Commond,Find_Commond_Value)
+--[[--]]	return
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	end
+--[[--]]	if Say_Types == 1 then
+--[[--]]	Server.onSay.Add(Commond_Say)
+--[[--]]	elseif Say_Types == 2 then
+--[[--]]	Server.sayCallback = (Commond_Say)
+--[[--]]	end
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- :::::::::::::  							위의 스크립트는 건드실 필요가 없습니다.											:::::::::::::
+-- :::::::::::::  																								    :::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
